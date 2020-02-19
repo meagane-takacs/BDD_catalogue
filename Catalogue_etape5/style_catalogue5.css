@@ -1,0 +1,88 @@
+#Boutique {
+    margin-top: 20px;
+    font-family: "Segoe Script";
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    background: antiquewhite;
+    text-shadow: 2px 2px 12px black;
+
+}
+
+.container1 {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 10px;
+    box-shadow: 2px 2px 20px black;
+    height: 500px;
+}
+
+
+.articles {
+    background: antiquewhite;
+    padding: 5px;
+    font-family: "Lucida Sans Unicode";
+    font-size: 30px;
+    margin: auto;
+    border-radius: 10px;
+    max-height: 50px;
+}
+
+.photos {
+    max-width: 400px;
+    border-radius: 50px;
+}
+
+.price {
+    font-family: "Lucida Sans Unicode";
+    font-size: 20px;
+    margin: auto;
+    max-height: 50px;
+
+
+}
+
+.choice {
+    margin-top: 5px;
+    margin-right: 60px;
+}
+
+.submit {
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+
+.delete {
+    margin-top: 420px;
+    margin-right: 50px;
+}
+
+
+.buttonQte {
+    font-family: "Lucida Sans Unicode";
+    font-size: 15px;
+    margin-right: 80px;
+}
+
+.buttonQtePanier {
+    font-family: "Lucida Sans Unicode";
+    font-size: 15px;
+
+}
+
+.TotalPanier {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.msgSelec {
+    font-family: "Lucida Sans Unicode";
+}
