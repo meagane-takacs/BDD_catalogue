@@ -45,7 +45,10 @@ include("functions.php");
 
     <input class="submit" type="submit" value="Ajoutez au panier">
 
+
+
 </form>
+
 
 
 </body>

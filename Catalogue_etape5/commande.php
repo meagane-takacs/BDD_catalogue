@@ -1,6 +1,7 @@
 <?php
 include('functions_BDD.php');
 include('functions.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +15,21 @@ include('functions.php');
 </head>
 <body>
 
+
+
+<form  method="POST" action="commande_post.php">
+    <input class="submit" type="submit" value="Commander">
+</form>
+
+
+
 <form method="POST" action="commande_post.php">
     <p>
-        <input type="text" name="date" placeholder="Date"> <br />
         <input type="text" name="idClients" placeholder="N° Client">
 
         <input type="submit" value="Envoyer" />
+
+
      </p>
 </form>
 

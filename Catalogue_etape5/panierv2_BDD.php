@@ -12,8 +12,13 @@ if (!isset ($_POST['choix'])) {
 } else {
 
 $bdd = connection();
+var_dump($_POST);
 $idIn = implode(",", $_POST['choix']);
+var_dump($idIn);
 $tableArticle = $bdd->query('SELECT * FROM `articles` WHERE articles.idArticles IN (' . $idIn . ')');
+var_dump($bdd->errorInfo());
+
+echo 'Vous avez sélectionné les articles ' . $idIn . '!';
 
 
 ?>
@@ -43,14 +48,16 @@ $tableArticle = $bdd->query('SELECT * FROM `articles` WHERE articles.idArticles 
            echo "Total du panier : " . $sum . " euros"; ?>
        </div>
 
-        <input class="submit" type="submit" value="Mettre à jour le panier">
+        <input class="submit" type="submit" value="Mettre à jour le panier"> ou  <input class="submit" type="submit" value=Commander>
 
     </form>
 
-   <form  method="POST" action="commande.php">
-       <input class="submit" type="submit" value="Commander">
+   <form method="POST" action="panierv2_BDD.php">
+
+       <input class="submit" type="submit" value=Commander>
    </form>
 
+   
     <?php
 }
 
