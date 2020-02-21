@@ -1,7 +1,8 @@
 <?php
 include('functions_BDD.php');
 include('functions.php');
-session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,37 +17,24 @@ session_start();
 <body>
 
 
-
-<form  method="POST" action="commande_post.php">
-    <input class="submit" type="submit" value="Commander">
-</form>
-
-
-
-<form method="POST" action="commande_post.php">
-    <p>
-        <input type="text" name="idClients" placeholder="N° Client">
-
-        <input type="submit" value="Envoyer" />
-
-
-     </p>
-</form>
-
 <?php
 
-$bdd = connection();
 
-$reponse = $bdd->query('SELECT date, clients_idClients FROM commandes');
+//$bdd = connection();
+//
+//$reponse = $bdd->query('SELECT date, clients_idClients FROM commandes');
+//
+////while ($donnees = $reponse->fetch())
 
-while ($donnees = $reponse->fetch())
-{
-    echo '<p>Client n° ' . htmlspecialchars($donnees['clients_idClients']) . ' commande du : ' . htmlspecialchars($donnees['date']) . '</p>';
-}
+insertCommandef();
 
+//$reponse->closeCursor();
 
-$reponse->closeCursor();
 ?>
+
+<form method="POST" action="catalogue5_panier.php">
+    <input class="submit" type="submit" value="Ok, retour à la boutique">
+</form>
 
 
 </body>

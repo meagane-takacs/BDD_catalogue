@@ -1,6 +1,20 @@
+
+
 <!--CE FICHIER EST UNE BOITE A OUTIL OU IL Y A TOUTES MES FONCTIONS-->
 
 <?php
+
+
+function connection()
+{
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=commandes;charset=utf8', 'mtakacs', 'Eebslpdmv1904', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    return $bdd;
+}
+
 
 // Ma première fonction permet d'appeler chaque article de façon indépendante.
 function afficheArticle1()
@@ -132,8 +146,35 @@ function totalPanier($sum, $price_article, $qteArticle)
 }
 
 
+
+function insertCommandef ()
+
+{
+    $bdd = connection ();
+    if (empty ($_POST)) {
+        echo "Votre commande ne contient aucun article";
+        var_dump($_POST);
+    } else {
+        $cmdArticle = $bdd->prepare('INSERT INTO `commandes` (date, clients_idClients ) VAlUES (CURRENT_DATE, 1)');
+        $cmdArticle->execute();
+
+        $id_nouveau = $bdd->lastInsertId();
+        var_dump($id_nouveau);
+var_dump($_POST);
+        $cmdHasArt = $bdd->prepare('INSERT INTO `commandes_has_articles` (commandes_idCommande, articles_idArticles,qte) VAlUES (?, ?, ?)');
+
+        foreach ($_POST['choix'] as $idArticle) {
+            $cmdHasArt->execute(array($id_nouveau, $idArticle, $_POST['tentacles'][$idArticle]));
+        }
+
+        echo 'Votre commande à bien été prise en compte';
+
+    }
+}
+
+function insertStockf()
+{
+    $cmdStock = $bdd->prepare('UPDATE `articles` (idArticles, Stock) SET (lastInsetId, ?)');
+    $cmdStock->execute(array($_POST['idArticles'], $_POST['Stock']));
+}
 ?>
-
-
-
-

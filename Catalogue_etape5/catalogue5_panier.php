@@ -4,7 +4,7 @@
 <!-- on affiche le tableau qui nous servira plus tard-->
 <?php
 
-include('functions_BDD.php');
+include('functions.php');
 
 $bdd = connection();
 
@@ -12,7 +12,7 @@ $tableArticle = $bdd->query('SELECT * FROM articles');
 
 
 //On inclut la fonction (c'est la boite à outils)
-include("functions.php");
+
 
 
 ?>

@@ -32,10 +32,11 @@ $tableArticle = $bdd->query('SELECT * FROM `articles` WHERE articles.idArticles 
 
         <?php
         $sum = 0;
-        while ($donnees = $tableArticle->fetch()) {
+        $donnees = $tableArticle->fetchAll();
+        foreach ($donnees as $produit) {
 
-            afficheArticlepanier($donnees['idArticles'], $donnees['nom'], $donnees['prix'], $donnees['img'], $_POST['tentacles'][$donnees['idArticles']]);
-            $sum = totalPanier($sum, $donnees['prix'], $_POST['tentacles'][$donnees['idArticles']]);
+            afficheArticlepanier($produit['idArticles'], $produit['nom'], $produit['prix'], $produit['img'], $_POST['tentacles'][$produit['idArticles']]);
+            $sum = totalPanier($sum, $produit['prix'], $_POST['tentacles'][$produit['idArticles']]);
         }
         ?>
        <div class="TotalPanier">
@@ -48,7 +49,14 @@ $tableArticle = $bdd->query('SELECT * FROM `articles` WHERE articles.idArticles 
     </form>
 
    <form  method="POST" action="commande.php">
-       <input class="submit" type="submit" value="Commander">
+       <?php foreach ($donnees as $produit) {?>
+           <input type="hidden" name="choix[]" class="choice" value="<?php echo $produit['idArticles'] ?>">
+           <input type="hidden" id="tentacles" name="tentacles[<?= $produit['idArticles'] ?>]"
+                   min="1" max="100" value="<?php echo $_POST['tentacles'][$produit['idArticles']] ?>"><?php
+       }
+       ?>
+
+       <input class="submit" type="submit" value="Valider ma commande">
    </form>
 
     <?php
